@@ -38,8 +38,3 @@ const b58Address = "uChUhoZ4mGSu7hvf4xdULk4ZsW5nMGSfKCH1tK97sYhgCNZrPBZnv1Sh4ohJ
 const expectedResult = "ifLqkWugzwqYq6FNw7qGB4p2zxMyUBGR9r9GW8imLemtV9Pu5EL9yrKbUnHa6AuzSEb8mEWwLDnfi8MnURmPE7mgFot4jX3BoCrU9fdFjN5BFNigQy8peXbJRN1Z4ApTHVjsjDyWqoB6dBi2vwFRTPQtkUNcRFuFvh6Gyst88RY1NaKpKzcxXgixicHcyL3LhPrcNtNiKR1spUcckrKg2AWLwQoVeoNqspEu1y4zg5g3UFjVYHM3jj2Mp5eVq4WkwW1x2D42z8Y1gGWjNDz1r"
 const result = await getPaymentRequest(parseB58(b58Address), "99999900000000", "test invoice")
 console.assert(result === expectedResult, "Test failed")
-
-// Ruffer's Moby
-// const b58Address = "uChUhoZ4mGSu7hvf4xdULk4ZsW5nMGSfKCH1tK97sYhgCNZrPBZnv1Sh4ohJLpvCeoJP8UtB46Mfi3tCpPiKj9HBsMr91gFvEzX6PvRK2wGohCzy3uugK3rP6kU37J4ygsvrfUhKpV4spdkFKDkAd43vWNkQ5uGKP5DW4P6mB8siHt2oLoedmPn7Byv8pAHWaDrEBqEdYPzEnrvA7YXsy6vqLn5SyeGY56QmWbjXrFXTKtzMmKx"// const result = await getPaymentRequest(parseB58(b58Address), "99999900000000", "test invoice")
-// const result = await getPaymentRequest(parseB58(b58Address), "99999900000000", "test invoice")
-// console.log(result)
