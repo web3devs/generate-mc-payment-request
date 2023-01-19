@@ -4,7 +4,7 @@ import crc32 from "crc/crc32"
 
 function getChecksum(buffer: Buffer | Uint8Array): Buffer {
     // @ts-ignore
-    const crc = crc32(buffer).toString(16)
+    const crc = crc32(buffer).toString(16).padStart(8,'0')
     return Buffer.from(crc, "hex").reverse()
 }
 
@@ -34,7 +34,12 @@ export async function getPaymentRequest(publicAddress: Buffer, amount: string | 
     return BS58.encode(Buffer.concat([checksum, paymentRequestProto]))
 }
 
-const b58Address = "sHYSrc4kc4m3NUo9f99UkAendEz9cKx22kTL5divPiqzpGhmfJq8Hhj2QgEW6wBfD3PPTHFGNKFFRum2CGYepmWJZyFRtJdt6uQs7XrtBBAf3N61AyDwAwHvr8Vj7YNVYY5NsKg1vbUbMoX74qzFQfa9hQuBccRYC8Hos1JYe6AzaipGVL5TKU6t8qPLTnTzGFvwrQthF5LVQnTHvEBLZnSazRbiKvmw9irVfEZf8DNnZUQzFkP"
-const expectedResult = "BM2dvA9xZPP63fkfGpcttmuoZtgqXKpSmzQ9c2vj3S2d8k84YXKipt3WpaAhdkmUXFFNQp1ydh18FmYuqUf5q41ED7VAdPJfH6J1qfx4ni6HvCJJDSDQvCYjHP3mohUGDp92Ye7oKS1DxJkfRdMouMQqgkFkMbEgYYQ3sx35ogviEWSXRz4yBtzVacvgQ4L2fGwjtP4Aq2WBjHd8MxMhPnBgCBbncjhzFrkQnxV8tsXeoYgyaEyA5XwdnpKyffsannAjZ5g172PAcYk75pvdr"
+const b58Address = "uChUhoZ4mGSu7hvf4xdULk4ZsW5nMGSfKCH1tK97sYhgCNZrPBZnv1Sh4ohJLpvCeoJP8UtB46Mfi3tCpPiKj9HBsMr91gFvEzX6PvRK2wGohCzy3uugK3rP6kU37J4ygsvrfUhKpV4spdkFKDkAd43vWNkQ5uGKP5DW4P6mB8siHt2oLoedmPn7Byv8pAHWaDrEBqEdYPzEnrvA7YXsy6vqLn5SyeGY56QmWbjXrFXTKtzMmKx"
+const expectedResult = "ifLqkWugzwqYq6FNw7qGB4p2zxMyUBGR9r9GW8imLemtV9Pu5EL9yrKbUnHa6AuzSEb8mEWwLDnfi8MnURmPE7mgFot4jX3BoCrU9fdFjN5BFNigQy8peXbJRN1Z4ApTHVjsjDyWqoB6dBi2vwFRTPQtkUNcRFuFvh6Gyst88RY1NaKpKzcxXgixicHcyL3LhPrcNtNiKR1spUcckrKg2AWLwQoVeoNqspEu1y4zg5g3UFjVYHM3jj2Mp5eVq4WkwW1x2D42z8Y1gGWjNDz1r"
 const result = await getPaymentRequest(parseB58(b58Address), "99999900000000", "test invoice")
 console.assert(result === expectedResult, "Test failed")
+
+// Ruffer's Moby
+// const b58Address = "uChUhoZ4mGSu7hvf4xdULk4ZsW5nMGSfKCH1tK97sYhgCNZrPBZnv1Sh4ohJLpvCeoJP8UtB46Mfi3tCpPiKj9HBsMr91gFvEzX6PvRK2wGohCzy3uugK3rP6kU37J4ygsvrfUhKpV4spdkFKDkAd43vWNkQ5uGKP5DW4P6mB8siHt2oLoedmPn7Byv8pAHWaDrEBqEdYPzEnrvA7YXsy6vqLn5SyeGY56QmWbjXrFXTKtzMmKx"// const result = await getPaymentRequest(parseB58(b58Address), "99999900000000", "test invoice")
+// const result = await getPaymentRequest(parseB58(b58Address), "99999900000000", "test invoice")
+// console.log(result)
